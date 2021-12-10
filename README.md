@@ -4,6 +4,8 @@
 # edld652
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/datalorax/edld652/workflows/R-CMD-check/badge.svg)](https://github.com/datalorax/edld652/actions)
 <!-- badges: end -->
 
 This is course package meant to help ease the burden of downloading and

@@ -23,11 +23,11 @@ get_documentation <- function(name) {
   file_open(file_path)
 }
 
-
 file_open <- function(file) {
   if (.Platform$OS.type == "unix") {
     system(paste("open", file))
   } else {
-    system2(file)
+    shell.exec(file)
   }
 }
+

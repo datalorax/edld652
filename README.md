@@ -116,6 +116,30 @@ district_grad_rates
 #> #   PIPELINE <chr>, DL_INGESTION_DATETIME <dttm>
 ```
 
-An Excel document providing documentation for each dataset will be
-shared with you, but is also available
-[here](https://github.com/uo-datasci-specialization/c2-dataviz-2022/raw/main/data/UO%20ED%20Data%20Share.xlsx).
+Documenation for any of these datasets is available via the
+`get_documentation()` function, passing the name of the dataset you’d
+like documentation on. Note that these will return either Microsoft Word
+or Excel files, which should open automatically after downloading. For
+example running
+
+``` r
+get_documentation("EDFacts_acgr_lea_2011_2019")
+```
+
+will create a `data-documentation` directory in your current working
+directory (if it does not already currently exist), download the Word or
+Excel file to that directory, and open the corresponding file. Running
+`get_documentation()` for additional datasets will add the documentation
+to the `data-documenatation` folder (i.e., it will not overwrite any
+previous documentation downloaded). Similarly, if the documentation has
+previously been downloaded, it will open that documentation rather than
+downloading the file again. In other words, running
+
+``` r
+get_documentation("NCES_CCD_nonfiscal_school_2018_membership")
+```
+
+would add (and open) a new documentation file to the
+`data-documentation` directory, because it is different documentation
+than requested previously, but running that command again would only
+open the file (not download it again).

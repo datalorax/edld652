@@ -16,14 +16,29 @@ get_data <- function(name) {
 
 #' Imports all fiscal data available
 #'
+#' Returns a list of all fiscal data.
+#'
 #' Note -  this may not work if you don't have a lot of memory, and it will
 #' take a considerable amount of time regardless. Be prepared to wait several
 #' minutes.
 #' @export
+#' @examples \dontrun{
+#' l <- get_fiscal_data()
+#'
+#' # fiscal dataframe from 2010
+#' l$sy2010
+#'
+# fiscal dataframe from 2018
+#' l$sy2018
+#'
+#' }
 get_fiscal_data <- function() {
   files <- paste0("NCES_CCD_fiscal_district_20", 10:18)
-  l <- lapply(files, get_data)
-  do.call(rbind, l)
+  suppressMessages(
+    l <- lapply(files, get_data)
+  )
+  names(l) <- paste0("sy20", 10:18)
+  l
 }
 
 #' List  the available dataset

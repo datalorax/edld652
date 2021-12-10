@@ -8,16 +8,27 @@ get_documentation <- function(name) {
   link <- documentation[documentation$TABLE_NAME == name, "Documentation"]
   ext <- substr(link, nchar(link) - 4, nchar(link))
   file <- paste0(name, ext)
+  file_path <- file.path(getwd(),"data-documentation", file)
 
-  if(file.exists(file.path(getwd(),"data-documentation", file))) {
-    system(paste("open", file.path(getwd(),"data-documentation", file)))
+  if(file.exists(file_path)) {
+    file_open(file_path)
+    return(message("Opening documentation file ", file))
   }
 
   if (!file.exists("data-documentation")) {
     dir.create(file.path(getwd(), "data-documentation"))
   }
-  file_path <- file.path(getwd(),"data-documentation", file)
 
   download.file(link, file_path)
-  system(paste("open", file_path))
+  file_open(file_path)
+}
+
+
+file_open <- function(file) {
+  if (.Platform$OS.type == "unix") {
+    open_command <- paste("open", file)
+  } else {
+    open_command <- file
+  }
+  system(open_command)
 }

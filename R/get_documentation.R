@@ -26,9 +26,8 @@ get_documentation <- function(name) {
 
 file_open <- function(file) {
   if (.Platform$OS.type == "unix") {
-    open_command <- paste("open", file)
+    system(paste("open", file))
   } else {
-    open_command <- file
+    system2(file)
   }
-  system(open_command)
 }

@@ -1,0 +1,14 @@
+Package: edld652
+Title: Course Package for EDLD 652: Data Visualization for Educational Data Science
+Version: 0.0.0.9000
+Authors@R: 
+    person("Daniel", "Anderson", , "daniela@uoregon.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "https://orcid.org/0000-0003-4699-4680"))
+Description: This is a package designed for retrieving data for the EDLD 652 course taught at the University of Oregon.
+License: CC BY 4.0
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    AzureStor

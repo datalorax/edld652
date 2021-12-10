@@ -1,0 +1,51 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# edld652
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This is course package meant to help ease the burden of downloading and 
+accessing the course data. Functions will likely be added to the package as
+the course goes along.
+
+## Installation
+
+You can install **edld652** with:
+
+``` r
+remotes::install_github("datalorax/edld652")
+```
+
+## Example
+
+If you are a student in this class, a shared access signature (SAS) will be shared with you. This is what authenticates you to obtain access to the data. To start, you will need to pass the SAS to `set_key()` as a string (e.g., `set_key("abc-key-but-really-long-and-complicated")`). You will only need to do this once, and the package will prompt you to do this upon loading it if it hasn't been done previously. The SAS will be stored in your .REnviron (you could use something like `usethis::edit_r_environ()` if you want to see it). After running `set_key()` you will be prompted to restart R for the changes to take effect. 
+
+Once you have stored your SAS authentication token with `set_key()`, you can import any dataset available with the `get_data()` function. However, you might be asking yourself "how do I know what file I want?". We can get a list of all available datasets with the `list_datasets()` function. For example:
+
+```{r }
+library(edld652)
+list_datasets()
+```
+
+From here, we can just copy the string of the dataset we want to import and pass that to `get_data()`. For example, if we wanted to read in `"EDFacts_acgr_lea_2011_2019"`, we would use the following code
+
+```{r }
+district_grad_rates <- get_data("EDFacts_acgr_lea_2011_2019")
+district_grad_rates
+```
+
+An Excel document providing documentation for each dataset will be shared with you, but is also available [here](https://github.com/uo-datasci-specialization/c2-dataviz-2022/raw/main/data/UO%20ED%20Data%20Share.xlsx).

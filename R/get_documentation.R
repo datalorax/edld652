@@ -6,11 +6,14 @@
 
 get_documentation <- function(name) {
   link <- documentation[documentation$TABLE_NAME == name, "Documentation"]
+  if (.Platform$OS.type != "unix") {
+    return(message(link))
+  }
   ext <- substr(link, nchar(link) - 4, nchar(link))
   file <- paste0(name, ext)
   file_path <- file.path(getwd(),"data-documentation", file)
 
-  if(file.exists(file_path)) {
+  if (file.exists(file_path)) {
     file_open(file_path)
     return(message("Opening documentation file ", file))
   }
@@ -24,10 +27,6 @@ get_documentation <- function(name) {
 }
 
 file_open <- function(file) {
-  if (.Platform$OS.type == "unix") {
-    return(system(paste("open", file)))
-  } else {
-    return(shell.exec(file))
-  }
+  system(paste("open", file))
 }
 

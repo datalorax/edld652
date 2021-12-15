@@ -6,6 +6,9 @@
 
 get_documentation <- function(name) {
   link <- documentation[documentation$TABLE_NAME == name, "Documentation"]
+  if (grepl("lunch_program", name)) {
+    link <- "https://nces.ed.gov/ccd/xls/2019-20_School_Lunch_Companion.xlsx"
+  }
   if (.Platform$OS.type != "unix") {
     return(message(link))
   }

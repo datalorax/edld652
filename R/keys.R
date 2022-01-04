@@ -50,7 +50,7 @@ set_key <- function(key, overwrite = FALSE) {
   home_files <- list.files(home, all.files = TRUE)
 
   if (!any(grepl("\\.Renviron", home_files))) {
-    dir.create(file.path(home, ".Renviron"))
+    file.create(file.path(home, ".Renviron"))
   }
 
   renviron <- readLines(file.path(home, ".Renviron"))

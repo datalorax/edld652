@@ -15,7 +15,8 @@ get_documentation <- function(name) {
     link <- "https://nces.ed.gov/ccd/xls/2019-20_School_Lunch_Companion.xlsx"
   }
   if (.Platform$OS.type != "unix") {
-    return(message(link))
+    message(link)
+    return(link)
   }
   ext <- substr(link, nchar(link) - 4, nchar(link))
   file <- paste0(name, ext)
